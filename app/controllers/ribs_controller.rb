@@ -1,2 +1,4 @@
 class RibsController < ApplicationController
+
+	
 end
