@@ -18,8 +18,10 @@
 	<div class="ribbitWrapper">
 		<%= @user.ribs.each do |r| %>
 		<p>
-				<%= r .content %>
+				<%= r.content %>
 		</p>
 		<% end %>
 	</div>
 </div>
+
+<%=  javascript_include_tag 'ribs' %>
