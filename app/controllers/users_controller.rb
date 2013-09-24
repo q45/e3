@@ -6,7 +6,10 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@rib = Rib.new
-		@relationship = Relationship.new
+		@relationship = Relationship.where(
+				follower_id: current_user.id,
+				followed_id: @user.id
+			).first_or_initialize if current_user
 	end
 
 	def create

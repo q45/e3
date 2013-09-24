@@ -8,8 +8,8 @@
 		<span class="name"><%= @user.name %></span>@<%= @user.username %>
 		<p>
 			<%= @user.ribs.length %> Ribs
-			<span class="spacing"><%= @user.followers.length %></span>
-			<span class="spacing"><%= @user.followeds.length %></span>
+			<span class="spacing"><%= @user.followers.length %> Followers</span>
+			<span class="spacing"><%= @user.followeds.length %> Following</span>
 
 			<% if current_user && @user != current_user %>
 				<% if current_user.following? @user %>
