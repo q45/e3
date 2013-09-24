@@ -1,0 +1,2 @@
+module RibsHelper
+end
