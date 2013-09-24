@@ -16,6 +16,10 @@
 <div class="panel left">
 	<h1> Ribbits</h1>
 	<div class="ribbitWrapper">
-		Ribbits Comming . . . 
+		<%= @user.ribs.each do |r| %>
+		<p>
+				<%= r .content %>
+		</p>
+		<% end %>
 	</div>
 </div>
