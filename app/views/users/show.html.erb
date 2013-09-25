@@ -2,7 +2,8 @@
 	<%= render 'ribs/new' %>
 <% end %>
 <div id="ribbits" class="panel left">
-	<h1>Your Profile</h1>
+	<h1>Your Profile</h1> 
+	<%= link_to("(edit profile)", edit_user_path(@user)) if @user == current_user %>
 	<div class="ribbitWrapper">
 		<img class="avatar" src="<%= @user.avatar_url %>"/>
 		<span class="name"><%= @user.name %></span>@<%= @user.username %>

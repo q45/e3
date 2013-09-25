@@ -1,0 +1,27 @@
+<% if current_user %>
+	<%= render 'ribs/new' %>
+<% end %>
+	<div class="panel left">
+		<h1>Public Profiles</h1>
+		<%= @user.each do |user| %>
+		<div class="ribbitWrapper">
+		<a href="<%= user_path user %>">
+			<img class="avatar" src="<%= user.avatar_url %>"/>
+			<span class="name"><%= @user.name %></span>@<%= user.username %>
+			</a>
+			@<%= user.username %>
+			<p>
+				<%= user.ribs.length %> Ribs
+				<span class="spacing"><%= user.followers.length %> Followers</span>
+				<span class="spacing"><%= user.followeds.length %> Following</span>
+			</p>
+			<% if user.bio %>
+				<p><%= user.bio %></p>
+			<% elsif user.ribs.first %>
+				<p><%= user.ribs.first.content %></p>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+
+<%= javascript_include_tag 'ribs' %>

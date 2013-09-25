@@ -1,4 +1,21 @@
 class UsersController < ApplicationController
+
+	def index
+		@user = User.all
+		@rib = Rib.new
+	end
+
+
+
+	def buddies
+		if current_user
+			@rib = Rib.new
+			buddies_ids = current_user.followeds.map(&:id).push(current_user.id)
+			@ribs = Rib.find_all_by_user_id buddies_ids
+		else
+			redirect_to root_url
+		end
+	end	
 	def new
 		@user = User.new
 	end
@@ -19,6 +36,19 @@ class UsersController < ApplicationController
 			redirect_to @user, notice: "Thank you for signing up for ribbit"
 		else
 			render :new
+		end
+	end
+
+	def edit
+		@user = User.find(params[:id])
+	end
+
+	def update
+		@user = User.find(params[:id])
+		if @user.update_attributes(params[:user])
+			redirect_to @user, notice: "profile updated"
+		else
+			render 'edit'
 		end
 	end
 
